@@ -14,7 +14,7 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 RUN mvn clean install
 
 FROM openjdk:17-jdk-slim
-EXPOSE 8080;
+EXPOSE 8080
 COPY --from=build /build/libs/portfolio-0.0.1.jar portfolio-0.0.1.jar
 
 ENTRYPOINT ["java","-jar","portfolio-0.0.1.jar"]
