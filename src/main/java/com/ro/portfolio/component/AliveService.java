@@ -17,8 +17,8 @@ import reactor.core.publisher.Mono;
 @EnableScheduling
 public class AliveService {
     private final WebClient webClient;
-    @Value("${spring.actuator.health.url}")
-    private String healthCheckUrl;
+    @Value("${spring.app.base.url}")
+    private String baseUrl;
 
     private static final Logger log = LoggerFactory.getLogger(AliveService.class);
     public AliveService(WebClient.Builder webClientBuilder) {
@@ -27,6 +27,7 @@ public class AliveService {
 
     @Scheduled(fixedRate = 60000) // Every 60 seconds
     public void keepAlive() {
+        String healthCheckUrl = baseUrl + "actuator/health";
         log.info(" Health check URL: "+ healthCheckUrl);
         Mono<String> result = webClient.get()
                 .uri(healthCheckUrl)
