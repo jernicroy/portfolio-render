@@ -27,7 +27,7 @@ public class AliveService {
 
     @Scheduled(fixedRate = 60000) // Every 60 seconds
     public void keepAlive() {
-        String healthCheckUrl = baseUrl + "actuator/health";
+        String healthCheckUrl = baseUrl + "api/pinch";
         log.info(" Health check URL: "+ healthCheckUrl);
         Mono<String> result = webClient.get()
                 .uri(healthCheckUrl)

@@ -25,17 +25,10 @@ public class VisitorService {
         return visitorRepository.save(visitorsInfo);
     }
 
-    public VisitorsInfo fetchAndSaveProject() {
-        Mono<VisitorsInfo> visitorMono = webClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/json")
-                        .queryParam("token", "4565fcbc9f62b5")
-                        .build())
-                .retrieve()
-                .bodyToMono(VisitorsInfo.class);
+    public VisitorsInfo fetchAndSaveProject(VisitorsInfo visitorsInfo) {
 
-        VisitorsInfo response = visitorMono.block();
-        response.setLastUpdatedBy(LocalDateTime.now());
-        System.out.println("Response from ipinfo: "+ response);
-        return saveVisitors(response);
+        visitorsInfo.setLastUpdatedBy(LocalDateTime.now());
+        System.out.println("Response from ipinfo: "+ visitorsInfo);
+        return saveVisitors(visitorsInfo);
     }
 }
