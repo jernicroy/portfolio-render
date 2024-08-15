@@ -2,6 +2,9 @@ package com.ro.portfolio.model;
 
 import lombok.Data;
 
+/**
+ * Token model to store the visitor details in object
+ */
 @Data
 public class TokenModel {
     private String visitorUrl;

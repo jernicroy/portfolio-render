@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 /**
- * @Description : Component to prevent application from spin down in the server
+ * Component to prevent application from spin down in the server
  *
  */
 @Component
@@ -21,10 +21,18 @@ public class AliveService {
     private String baseUrl;
 
     private static final Logger log = LoggerFactory.getLogger(AliveService.class);
+
+    /**
+     * Constructor for webclient instance
+     * @param webClientBuilder
+     */
     public AliveService(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.build();
     }
 
+    /**
+     * Scheduler method to make an api call to make the server alive
+     */
     @Scheduled(fixedRate = 60000) // Every 60 seconds
     public void keepAlive() {
         String healthCheckUrl = baseUrl + "api/pinch";

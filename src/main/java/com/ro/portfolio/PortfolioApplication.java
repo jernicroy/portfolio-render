@@ -10,15 +10,25 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import java.util.TimeZone;
 
+/**
+ * Entry Point the Portfolio Application
+ */
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = ErrorMvcAutoConfiguration.class)
 @EnableConfigurationProperties(ApplicationProperties.class)
 public class PortfolioApplication {
 
+	/**
+	 * Main function to start the portfolio application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PortfolioApplication.class, args);
 	}
 
+	/**
+	 * To set the Timezone on the boot of the application
+	 */
 	@PostConstruct
 	public void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));

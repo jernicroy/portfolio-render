@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/pinch")
 public class KeepAliveController {
 
+    /**
+     * Dummy API to make the server alive
+     * @return
+     */
     @GetMapping("")
     public String pinchToAlive(){
         return "I am Alive, and not tobe spin down";

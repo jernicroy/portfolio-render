@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Visitor Controller to Save the visitor info
+ */
 @RestController
 @RequestMapping("/api/visitor")
 public class VisitorInfoController {
@@ -25,7 +28,8 @@ public class VisitorInfoController {
     private String baseURL;
     @Value("${fetch.visitor.ip.url}")
     private String fetchIpURL;
-
+    
+    // Initializing the Log instance
     public final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**

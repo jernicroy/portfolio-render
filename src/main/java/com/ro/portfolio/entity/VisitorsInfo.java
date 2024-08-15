@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
+/**
+ * Document Entity for the visitor collection in MONGODB
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

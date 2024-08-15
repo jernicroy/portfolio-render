@@ -13,8 +13,13 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
 RUN mvn clean install
 
-FROM openjdk:17-jdk-slim
-EXPOSE 8080
-COPY --from=build /target/portfolio-0.0.1.jar portfolio-0.0.1.jar
+RUN mvn javadoc:javadoc
 
-ENTRYPOINT ["java","-jar","portfolio-0.0.1.jar"]
+FROM openjdk:17-jdk-slim
+
+WORKDIR app/
+EXPOSE 8080
+COPY --from=build /target/portfolio-0.0.1.jar app/portfolio-0.0.1.jar
+COPY --from=build /target/site/ app/static
+
+ENTRYPOINT ["java","-jar","app/portfolio-0.0.1.jar"]
