@@ -1,0 +1,8 @@
+com.ro.portfolio
+com.ro.portfolio.component
+com.ro.portfolio.config
+com.ro.portfolio.controller
+com.ro.portfolio.entity
+com.ro.portfolio.model
+com.ro.portfolio.repo
+com.ro.portfolio.service
