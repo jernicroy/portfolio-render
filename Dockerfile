@@ -20,6 +20,6 @@ FROM openjdk:17-jdk-slim
 WORKDIR app/
 EXPOSE 8080
 COPY --from=build /target/portfolio-0.0.1.jar app/portfolio-0.0.1.jar
-COPY --from=build /target/site/ app/static
+COPY --from=build /target/site app/static
 
 ENTRYPOINT ["java","-jar","app/portfolio-0.0.1.jar"]
